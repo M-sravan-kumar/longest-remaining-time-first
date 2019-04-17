@@ -21,13 +21,33 @@ int main()
 		scanf("%d",&p[i].processid);
 		printf("enter worsttime for 1st process\n");
 		scanf("%d",&p[i].worsttime);
-	} 
+	}
 	
-	do
-	{
-		if(p[0].worsttime>=p[1].worsttime && p[0].worsttime>=p[2].worsttime)
+	
+while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)	
+{
+	if(p[0].worsttime>=p[1].worsttime && p[0].worsttime>=p[2].worsttime)
 		{
-			if(p[1].worsttime > p[2].worsttime)
+			if( p[0].worsttime==p[1].worsttime && p[0].worsttime==p[2].worsttime )
+			{
+				if(p[0].processid<p[1].processid && p[0].processid<p[2].processid)
+				{
+					printf("%d",p[0].processid);
+					p[0].worsttime--;
+				}
+				else if(p[1].processid<p[2].processid)
+				{
+					printf("%d",p[1].processid);
+					p[1].worsttime--;
+				}
+				else
+				{
+					printf("%d",p[2].processid);
+					p[2].worsttime--;
+				}
+			}
+			
+		  else if(p[1].worsttime > p[2].worsttime)
 			{
 				while(p[0].worsttime!=p[1].worsttime)
 				{
@@ -60,11 +80,14 @@ int main()
 					p[2].worsttime--;
 				}
 			}
+			else
+			{
 			while(p[1].worsttime!=p[2].worsttime)
 			{
 				printf("%d",p[1].processid);
 				p[1].worsttime--;
 			}
+		    }
 		}
 		
 		else if(p[2].worsttime>p[1].worsttime)
@@ -77,11 +100,12 @@ int main()
 		}
 }
 
-while(p[0].worsttime!=0 && p[1].worsttime!=0 && p[2].worsttime!=0);
-
-printf("%d",p[2].worsttime);
+printf("\n%d\n%d\n%d",p[0].worsttime,p[1].worsttime,p[2].worsttime);
+		
 		
 }
+
+	
 
 
 
