@@ -1,11 +1,15 @@
 #include<stdio.h>
 struct proc
 {
+
+	int ct;
+	int tat;
+	int wt;
+	int arrivaltime;
 	int processid;
 	int worsttime;
-	int arrivaltime;
-	int ct;
-}*ptr,*max=NULL,*secondmax=NULL;
+
+};
 
 
 //void fun()
@@ -13,7 +17,9 @@ struct proc
 
 int main()
 {
-	proc p[3];
+	int l[3];
+	float avgtat=0, avgwt=0;
+	proc p[3]={0,0,0,0};
 	printf("enter 3 process u want to enter\n");
 	for(int i=0;i<3;i++)
 	{
@@ -23,6 +29,13 @@ int main()
 		scanf("%d",&p[i].worsttime);
 	}
 	
+	for(int i=0;i<3;i++)
+	{
+		l[i]=p[i].worsttime;
+	}
+	
+
+int time=0;
 	
 while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)	
 {
@@ -34,16 +47,23 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 				{
 					printf("%d",p[0].processid);
 					p[0].worsttime--;
+					time++;
+					p[0].ct=time;
+					
 				}
 				else if(p[1].processid<p[2].processid)
 				{
 					printf("%d",p[1].processid);
 					p[1].worsttime--;
+					time++;
+					p[1].ct=time;
 				}
 				else
 				{
 					printf("%d",p[2].processid);
 					p[2].worsttime--;
+					time++;
+					p[2].ct=time;
 				}
 			}
 			
@@ -53,6 +73,9 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 				{
 					printf("%d",p[0].processid);
 					p[0].worsttime--;
+					time++;
+					p[0].ct=time;
+					
 				}
 			}
 			else
@@ -61,9 +84,12 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 				{
 					printf("%d",p[0].processid);
 					p[0].worsttime--;
+					time++;
+					p[0].ct=time;
 				}
 			}
 		}
+		
 		
 		else if(p[1].worsttime >= p[2].worsttime )
 		{
@@ -73,11 +99,15 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 				{
 					printf("%d",p[1].processid);
 					p[1].worsttime--;
+					time++;
+					p[1].ct=time;
 				}
 				else
 				{
 					printf("%d",p[2].processid);
 					p[2].worsttime--;
+					time++;
+					p[2].ct=time;
 				}
 			}
 			else
@@ -86,6 +116,8 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 			{
 				printf("%d",p[1].processid);
 				p[1].worsttime--;
+				time++;
+				p[1].ct=time;
 			}
 		    }
 		}
@@ -96,12 +128,78 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 			{
 				printf("%d",p[2].processid);
 				p[2].worsttime--;
+				time++;
+				p[2].ct=time;
 			}
 		}
+
 }
 
-printf("\n%d\n%d\n%d",p[0].worsttime,p[1].worsttime,p[2].worsttime);
-		
+for(int i=0;i<3;i++)
+{
+   p[i].tat=p[i].ct-p[i].arrivaltime;	
+}
+ for(int i=0;i<3;i++)
+{
+   p[i].wt=p[i].tat-l[i];	
+}
+	
+	printf("\n\n");
+	
+	printf("process id: \t\t");
+    for(int i=0;i<3;i++)
+    {
+    	printf("%d\t",p[i].processid);
+	}  
+	printf("\n");
+	printf("\n");
+	
+printf("arriavale time\t\t");
+for(int i=0;i<3;i++)
+{
+	printf("%d\t",p[i].arrivaltime);
+}
+printf("\n");
+
+printf("burst time time is:\t");		
+		for(int i=0;i<3;i++)
+		{
+			printf("%d\t",l[i]);
+		}
+		printf("\n");
+
+printf("completion time is:\t");		
+		for(int i=0;i<3;i++)
+		{
+			printf("%d\t",p[i].ct);
+		}
+		printf("\n");
+			
+printf("turn around time is:\t");		
+		for(int i=0;i<3;i++)
+		{
+			printf("%d\t",p[i].tat);
+		}
+		printf("\n");
+printf("waiting around time is:\t");		
+		for(int i=0;i<3;i++)
+		{
+			printf("%d\t",p[i].wt);
+		}
+
+printf("\n\n");		
+	for(int i=0;i<3;i++)
+	{
+	   avgtat+=p[i].tat;
+	   avgwt+=p[i].wt;	
+	}	
+	
+	avgtat=avgtat/3;
+	avgwt=avgwt/3;
+	
+	printf("average turnaround time is : %.2f\n",avgtat);
+	printf("average waiting time is : %.2f",avgwt);
+	
 		
 }
 
