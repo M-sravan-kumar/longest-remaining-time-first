@@ -7,7 +7,7 @@ struct proc
 	int wt;
 	int arrivaltime;
 	int processid;
-	int worsttime;
+	int bursttime;
 
 };
 
@@ -17,6 +17,7 @@ struct proc
 
 int main()
 {
+	
 	int l[3];
 	float avgtat=0, avgwt=0;
 	proc p[3]={0,0,0,0};
@@ -26,27 +27,27 @@ int main()
 		printf("enter %d pocess id\n",i+1);
 		scanf("%d",&p[i].processid);
 		printf("enter worsttime for 1st process\n");
-		scanf("%d",&p[i].worsttime);
+		scanf("%d",&p[i].bursttime);
 	}
 	
 	for(int i=0;i<3;i++)
 	{
-		l[i]=p[i].worsttime;
+		l[i]=p[i].bursttime;
 	}
 	
 
 int time=0;
 	
-while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)	
+while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)	
 {
-	if(p[0].worsttime>=p[1].worsttime && p[0].worsttime>=p[2].worsttime)
+	if(p[0].bursttime>=p[1].bursttime && p[0].bursttime>=p[2].bursttime)
 		{
-			if( p[0].worsttime==p[1].worsttime && p[0].worsttime==p[2].worsttime )
+			if( p[0].bursttime==p[1].bursttime && p[0].bursttime==p[2].bursttime )
 			{
 				if(p[0].processid<p[1].processid && p[0].processid<p[2].processid)
 				{
 					printf("%d",p[0].processid);
-					p[0].worsttime--;
+					p[0].bursttime--;
 					time++;
 					p[0].ct=time;
 					
@@ -54,25 +55,25 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 				else if(p[1].processid<p[2].processid)
 				{
 					printf("%d",p[1].processid);
-					p[1].worsttime--;
+					p[1].bursttime--;
 					time++;
 					p[1].ct=time;
 				}
 				else
 				{
 					printf("%d",p[2].processid);
-					p[2].worsttime--;
+					p[2].bursttime--;
 					time++;
 					p[2].ct=time;
 				}
 			}
 			
-		  else if(p[1].worsttime > p[2].worsttime)
+		  else if(p[1].bursttime > p[2].bursttime)
 			{
-				while(p[0].worsttime!=p[1].worsttime)
+				while(p[0].bursttime!=p[1].bursttime)
 				{
 					printf("%d",p[0].processid);
-					p[0].worsttime--;
+					p[0].bursttime--;
 					time++;
 					p[0].ct=time;
 					
@@ -80,10 +81,10 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 			}
 			else
 			{
-				while(p[0].worsttime!=p[2].worsttime)
+				while(p[0].bursttime!=p[2].bursttime)
 				{
 					printf("%d",p[0].processid);
-					p[0].worsttime--;
+					p[0].bursttime--;
 					time++;
 					p[0].ct=time;
 				}
@@ -91,43 +92,43 @@ while(p[0].worsttime!=0 || p[1].worsttime!=0 || p[2].worsttime!=0)
 		}
 		
 		
-		else if(p[1].worsttime >= p[2].worsttime )
+		else if(p[1].bursttime >= p[2].bursttime )
 		{
-			if(p[1].worsttime==p[2].worsttime)
+			if(p[1].bursttime==p[2].bursttime)
 			{
 				if(p[1].processid<p[2].processid)
 				{
 					printf("%d",p[1].processid);
-					p[1].worsttime--;
+					p[1].bursttime--;
 					time++;
 					p[1].ct=time;
 				}
 				else
 				{
 					printf("%d",p[2].processid);
-					p[2].worsttime--;
+					p[2].bursttime--;
 					time++;
 					p[2].ct=time;
 				}
 			}
 			else
 			{
-			while(p[1].worsttime!=p[2].worsttime)
+			while(p[1].bursttime!=p[2].bursttime)
 			{
 				printf("%d",p[1].processid);
-				p[1].worsttime--;
+				p[1].bursttime--;
 				time++;
 				p[1].ct=time;
 			}
 		    }
 		}
 		
-		else if(p[2].worsttime>p[1].worsttime)
+		else if(p[2].bursttime>p[1].bursttime)
 		{
-			while(p[2].worsttime!=p[1].worsttime)
+			while(p[2].bursttime!=p[1].bursttime)
 			{
 				printf("%d",p[2].processid);
-				p[2].worsttime--;
+				p[2].bursttime--;
 				time++;
 				p[2].ct=time;
 			}
