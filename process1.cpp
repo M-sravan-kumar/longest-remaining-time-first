@@ -8,7 +8,7 @@ struct proc
 	int arrivaltime;
 	int processid;
 	int bursttime;
-	
+
 };
 
 //void fun()
@@ -23,7 +23,7 @@ int main()
 	{
 		printf("enter %d process id\n",i+1);
 		scanf("%d",&p[i].processid);
-		printf("enter %d process arrival time",i+1);
+		printf("enter %d process arrival time\n",i+1);
 		scanf("%d",&p[i].arrivaltime);
 		printf("enter bursttime for 1st process\n");
 		scanf("%d",&p[i].bursttime);
@@ -185,49 +185,28 @@ for(int i=0;i<3;i++)
 {
    p[i].wt=p[i].tat-l[i];	
 }
+printf("\n\n");
 	
-	printf("\n\n");
-	
-	printf("process id: \t\t");
-    for(int i=0;i<3;i++)
-    {
-    	printf("%d\t",p[i].processid);
-	}  
-	printf("\n");
-	printf("\n");
-	
-printf("arriavale time\t\t");
-for(int i=0;i<3;i++)
-{
-	printf("%d\t",p[i].arrivaltime);
-}
+printf("PID: \t");
+printf("AT\t");
+printf("BT\t");
+printf("CT\t");		
+printf("TAT\t");		
+printf("WT\t");		
+
 printf("\n");
 
-printf("burst time time is:\t");		
-		for(int i=0;i<3;i++)
-		{
-			printf("%d\t",l[i]);
-		}
-		printf("\n");
-
-printf("completion time is:\t");		
-		for(int i=0;i<3;i++)
-		{
-			printf("%d\t",p[i].ct);
-		}
-		printf("\n");
-			
-printf("turn around time is:\t");		
-		for(int i=0;i<3;i++)
-		{
-			printf("%d\t",p[i].tat);
-		}
-		printf("\n");
-printf("waiting around time is:\t");		
-		for(int i=0;i<3;i++)
-		{
-			printf("%d\t",p[i].wt);
-		}
+	for(int i=0;i<3;i++)
+    {
+    	printf("%d\t",p[i].processid);
+    	printf("%d\t",p[i].arrivaltime);
+    	printf("%d\t",l[i]);
+    	printf("%d\t",p[i].ct);
+    	printf("%d\t",p[i].tat);
+    	printf("%d\t",p[i].wt);
+    	
+    	printf("\n");
+	}  
 
 printf("\n\n");		
 	for(int i=0;i<3;i++)
@@ -244,6 +223,9 @@ printf("\n\n");
 }
 
 	
+
+
+
 
 
 
