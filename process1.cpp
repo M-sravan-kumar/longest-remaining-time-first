@@ -18,14 +18,14 @@ int main()
 	int l[3];
 	float avgtat=0, avgwt=0;
 	proc p[3]={0,0,0};
-	printf("enter 3 process u want to enter\n");
+	printf("enter 3 processes \n");
 	for(int i=0;i<3;i++)
 	{
-		printf("enter %d process id\n",i+1);
+		printf("enter %d  process id\n",i+1);
 		scanf("%d",&p[i].processid);
-		printf("enter %d process arrival time\n",i+1);
+		printf("enter %d  process arrival time\n",i+1);
 		scanf("%d",&p[i].arrivaltime);
-		printf("enter bursttime for 1st process\n");
+		printf("enter bursttime for %d  process\n",i+1);
 		scanf("%d",&p[i].bursttime);
 	}
 	
