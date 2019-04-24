@@ -43,24 +43,23 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 		{
 			if(p[0].bursttime>p[1].bursttime && p[0].bursttime>p[2].bursttime)
 			{
-				printf("%d",p[0].processid);
+				printf("%d | ",p[0].processid);
 				p[0].bursttime--;
 				time++;
 				p[0].ct=time;
-				
 			}
 			else if(p[0].bursttime==p[1].bursttime && p[0].bursttime!=p[2].bursttime )
 			{
 				if(p[0].processid<p[1].processid)
 				{
-			    printf("%d",p[0].processid);
+			    printf("%d |",p[0].processid);
 				p[0].bursttime--;
 				time++;
 				p[0].ct=time;	
 			    }
 			    else
 			    {
-			    printf("%d",p[1].processid);
+			    printf("%d |",p[1].processid);
 				p[1].bursttime--;
 				time++;
 				p[1].ct=time;	
@@ -70,14 +69,14 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 			{
 				if(p[0].processid>p[2].processid)
 				{
-				printf("%d",p[0].processid);
+				printf("%d |",p[0].processid);
 				p[0].bursttime--;
 				time++;
 				p[0].ct=time;
 			    }
 			    else
 			    {
-				printf("%d",p[2].processid);
+				printf("%d |",p[2].processid);
 				p[2].bursttime--;
 				time++;
 				p[2].ct=time;
@@ -87,7 +86,7 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 			{
 				if(p[0].processid<p[1].processid && p[0].processid<p[2].processid)
 				{
-					printf("%d",p[0].processid);
+					printf("%d|",p[0].processid);
 					p[0].bursttime--;
 					time++;
 					p[0].ct=time;
@@ -95,14 +94,14 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 				}
 				else if(p[1].processid<p[2].processid)
 				{
-					printf("%d",p[1].processid);
+					printf("%d |",p[1].processid);
 					p[1].bursttime--;
 					time++;
 					p[1].ct=time;
 				}
 				else
 				{
-					printf("%d",p[2].processid);
+					printf("%d |",p[2].processid);
 					p[2].bursttime--;
 					time++;
 					p[2].ct=time;
@@ -113,7 +112,7 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 			{
 				while(p[0].bursttime!=p[1].bursttime)
 				{
-					printf("%d",p[0].processid);
+					printf("%d |",p[0].processid);
 					p[0].bursttime--;
 					time++;
 					p[0].ct=time;
@@ -124,7 +123,7 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 			{
 				while(p[0].bursttime!=p[2].bursttime)
 				{
-					printf("%d",p[0].processid);
+					printf("%d |",p[0].processid);
 					p[0].bursttime--;
 					time++;
 					p[0].ct=time;
@@ -139,14 +138,14 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 			{
 				if(p[1].processid<p[2].processid)
 				{
-					printf("%d",p[1].processid);
+					printf("%d |",p[1].processid);
 					p[1].bursttime--;
 					time++;
 					p[1].ct=time;
 				}
 				else
 				{
-					printf("%d",p[2].processid);
+					printf("%d |",p[2].processid);
 					p[2].bursttime--;
 					time++;
 					p[2].ct=time;
@@ -156,7 +155,7 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 			{
 			while(p[1].bursttime!=p[2].bursttime)
 			{
-				printf("%d",p[1].processid);
+				printf("%d |",p[1].processid);
 				p[1].bursttime--;
 				time++;
 				p[1].ct=time;
@@ -168,7 +167,7 @@ while(p[0].bursttime!=0 || p[1].bursttime!=0 || p[2].bursttime!=0)
 		{
 			while(p[2].bursttime!=p[1].bursttime)
 			{
-				printf("%d",p[2].processid);
+				printf("%d |",p[2].processid);
 				p[2].bursttime--;
 				time++;
 				p[2].ct=time;
